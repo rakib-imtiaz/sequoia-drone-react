@@ -16,7 +16,7 @@ export default function HeroContact() {
         padding: '120px 24px 60px',
       }}
     >
-      <div style={{ position: 'relative', zIndex: 1, maxWidth: '800px', textAlign: 'center' }}>
+      <div style={{ position: 'relative', zIndex: 1, maxWidth: '800px', textAlign: 'center', color: '#1a1a1a' }}>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -27,7 +27,7 @@ export default function HeroContact() {
           CONTACT US
         </motion.p>
         
-        <StaggerText 
+        <StaggerText
           text="Start a conversation."
           className="headline"
           tag="h1"
