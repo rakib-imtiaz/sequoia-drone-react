@@ -151,9 +151,9 @@ export default function ContactForm() {
                 border: '1px solid rgba(255,255,255,0.05)'
               }}
             >
-              <Image 
-                src="https://images.unsplash.com/photo-1541888087425-d81bb192a2a7?w=1000&q=80" 
-                alt="Forest ground data points"
+              <Image
+                src="/images/about-drone-pilot-operator-hd.jpg"
+                alt="Professional drone operator at survey site"
                 fill
                 className="object-cover"
                 style={{ opacity: 0.6 }}
@@ -188,10 +188,15 @@ export default function ContactForm() {
                   gap: '8px'
                 }}
               >
-                <Crosshair size={48} color="#4DEBFF" style={{ marginBottom: '8px' }} />
-                <h4 style={{ fontSize: '48px', fontWeight: 700, color: '#ffffff', lineHeight: 1 }}>±2cm</h4>
-                <p style={{ fontSize: '14px', fontWeight: 600, color: '#888888', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-                  RMS Horizontal Accuracy
+                <Crosshair size={32} color="#4DEBFF" style={{ marginBottom: '8px' }} />
+                <h4 style={{ fontSize: 'clamp(48px, 7vw, 72px)', fontWeight: 700, color: '#ffffff', lineHeight: 1 }}>
+                  &lt; 1&quot;
+                </h4>
+                <p style={{ fontSize: '13px', fontWeight: 500, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+                  RMS Absolute Accuracy
+                </p>
+                <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.35)', marginTop: '4px' }}>
+                  DroneDeploy M3E Study
                 </p>
               </motion.div>
             </div>

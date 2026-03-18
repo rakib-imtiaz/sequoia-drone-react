@@ -14,12 +14,13 @@ const services = [
     borderCol: '#4DEBFF',
     outputsColor: '#4DEBFF',
     outputs: [
-      'Orthomosaic Maps (GeoTIFF)',
+      'Orthomosaic Map (GeoTIFF)',
       'DXF Feature Extraction',
-      'TIN Surface + Contours',
-      'AutoCAD Civil 3D Ready',
+      'TIN Surface + Contour Lines',
+      'AutoCAD Civil 3D Compatible',
     ],
-    image: 'https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=600&q=80',
+    image: '/images/survey-orthomosaic-top-down.jpg',
+    imageAlt: 'Real drone orthomosaic survey map top-down view',
   },
   {
     icon: Leaf,
@@ -28,12 +29,13 @@ const services = [
     borderCol: '#4CAF72',
     outputsColor: '#4CAF72',
     outputs: [
-      'NDVI / Multispectral Maps',
-      'Canopy Health Reports',
-      'Biomass Estimation',
-      'Time-Series Monitoring',
+      'NDVI / Multispectral Index Maps',
+      'Canopy Health & Biomass Reports',
+      'Time-Series Change Detection',
+      'Environmental Compliance Docs',
     ],
-    image: 'https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&q=80',
+    image: '/images/process-checkpoint-accuracy-map.jpg',
+    imageAlt: 'Aerial survey site with checkpoint markers',
   },
   {
     icon: Waves,
@@ -42,12 +44,13 @@ const services = [
     borderCol: '#E8612A',
     outputsColor: '#E8612A',
     outputs: [
-      '3D Point Cloud (LAS/LAZ)',
-      'BIM-Ready E57 Files',
-      'As-Built Floor Plans',
-      'Revit / AutoCAD Import',
+      '3D Point Cloud (LAS/LAZ + E57)',
+      'BIM-Ready Files (Revit / IFC)',
+      'As-Built Floor Plans (DWG)',
+      'IFC / RCP Export',
     ],
-    image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80',
+    image: '/images/hardware-mavic3-enterprise-closeup.jpg',
+    imageAlt: 'DJI Mavic 3 Enterprise hardware close-up',
   },
 ]
 
@@ -145,7 +148,7 @@ export default function ServicesOverview() {
                     >
                       <Image
                         src={svc.image}
-                        alt={svc.title}
+                        alt={svc.imageAlt}
                         fill
                         className="object-cover"
                       />
@@ -169,7 +172,7 @@ export default function ServicesOverview() {
             }}
           >
             <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', fontWeight: 400 }}>
-              All deliverables formatted for your existing workflow — DXF, DWG, GeoTIFF, LAS/LAZ, E57, IFC
+              All deliverables: DXF · DWG · GeoTIFF · LAS/LAZ · E57 · IFC
             </p>
           </div>
         </ScrollReveal>

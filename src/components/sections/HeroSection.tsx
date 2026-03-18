@@ -10,7 +10,7 @@ import { ArrowRight } from 'lucide-react'
 const ease = [0.165, 0.84, 0.44, 1] as [number, number, number, number]
 
 const valuePills = ['✓ DXF + CAD Ready', '✓ PPK Verified ±2cm', '✓ AutoCAD Civil 3D']
-const trustBadges = ['DJI Enterprise', 'Pix4D Certified', 'Emlid PPK', 'AutoCAD Civil 3D']
+const trustBadges = ['DJI Enterprise', 'Emlid PPK/RTK', 'Pix4D Pipeline', 'AutoCAD Civil 3D']
 
 export default function HeroSection() {
   const [mounted, setMounted] = useState(false)
@@ -21,29 +21,6 @@ export default function HeroSection() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      {/* ZONE 1 — Announcement Strip */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease }}
-        style={{
-          backgroundColor: '#111111',
-          padding: '12px 48px',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '8px',
-        }}
-      >
-        <span style={{ fontSize: '12px', fontWeight: 500, color: 'rgba(255,255,255,0.65)' }}>
-          🎯 Serving Land Surveyors & Engineering Firms in BC
-        </span>
-        <span style={{ fontSize: '12px', fontWeight: 500, color: 'rgba(255,255,255,0.65)' }}>
-          ±2cm PPK Accuracy — Civil 3D Compatible
-        </span>
-      </motion.div>
-
       {/* ZONE 2 — Main Hero */}
       <section
         style={{
@@ -277,8 +254,8 @@ export default function HeroSection() {
             >
               <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(to top, rgba(10,10,10,0.6) 0%, transparent 40%)' }} />
               <ParallaxImage
-                src="https://images.unsplash.com/photo-1519338381761-c7523edc1f46?w=1200&q=80"
-                alt="Aerial survey drone mapping BC interior"
+                src="/images/hero-mavic3-construction-site.jpg"
+                alt="DJI Mavic 3 Enterprise RTK in flight at survey construction site"
                 speed={20}
               />
             </div>
@@ -303,25 +280,17 @@ export default function HeroSection() {
                 minWidth: '240px',
               }}
             >
-              <div style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.15em', color: '#888888', marginBottom: '8px', textTransform: 'uppercase' }}>
-                Verified Accuracy
+              <div style={{ fontSize: '10px', fontWeight: 500, letterSpacing: '0.12em', color: '#999999', marginBottom: '6px', textTransform: 'uppercase' }}>
+                VERIFIED FIELD ACCURACY
               </div>
-              <div style={{ fontSize: '36px', fontWeight: 700, color: '#4DEBFF', letterSpacing: '-0.02em', lineHeight: 1 }}>
-                ±2cm <span style={{ fontSize: '20px', color: '#ffffff' }}>RMS</span>
+              <div style={{ fontSize: '28px', fontWeight: 700, color: '#ffffff', lineHeight: 1 }}>
+                0.43&quot;
               </div>
-
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '20px' }}>
-                <span style={{ fontSize: '12px', fontWeight: 600, color: '#ffffff' }}>PPK Post-Processed</span>
-                <span style={{ fontSize: '12px', color: '#4DEBFF' }}>100%</span>
+              <div style={{ fontSize: '11px', color: '#4DEBFF', marginTop: '4px' }}>
+                RMS — M3E RTK + GCPs
               </div>
-
-              <div style={{ height: '4px', width: '100%', backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: '999px', marginTop: '8px', overflow: 'hidden' }}>
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: '100%' }}
-                  transition={{ duration: 1.5, delay: 1.8, ease }}
-                  style={{ height: '100%', backgroundColor: '#4DEBFF', borderRadius: '999px', boxShadow: '0 0 10px rgba(77,235,255,0.5)' }}
-                />
+              <div style={{ fontSize: '10px', color: '#aaaaaa', marginTop: '4px' }}>
+                DroneDeploy 2023
               </div>
             </motion.div>
           </motion.div>
@@ -356,7 +325,7 @@ export default function HeroSection() {
         }}
       >
         <span style={{ fontSize: '12px', fontWeight: 500, color: 'rgba(255,255,255,0.35)', whiteSpace: 'nowrap' }}>
-          Trusted for:
+          Accuracy validated by:
         </span>
         <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
           {trustBadges.map((badge) => (

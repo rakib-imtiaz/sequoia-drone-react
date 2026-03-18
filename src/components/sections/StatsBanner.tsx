@@ -5,10 +5,10 @@ import CountUp from 'react-countup'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 
 const stats = [
-  { value: 2, prefix: '±', suffix: 'cm', label: 'Positional Accuracy', decimal: 0 },
-  { value: 100, prefix: '', suffix: '%', label: 'CAD-Ready Deliverables', decimal: 0 },
-  { value: null, display: 'BC', label: 'Primary Service Region' },
-  { value: null, display: 'PPK+RTK', label: 'GNSS Methods Supported' },
+  { value: 0.43, prefix: '', suffix: '"', label: 'BEST RMS ACCURACY', decimal: 2 },
+  { value: 3, prefix: '', suffix: 'x', label: 'LESS ERROR VS STANDARD GPS', decimal: 0 },
+  { value: 30, prefix: '', suffix: '%+', label: 'FASTER MISSION SPEED', decimal: 0 },
+  { value: 48, prefix: '', suffix: 'hrs', label: 'FIELD TO CAD TURNAROUND', decimal: 0 },
 ]
 
 export default function StatsBanner() {
@@ -39,7 +39,6 @@ export default function StatsBanner() {
                   textAlign: 'center',
                 }}
               >
-                {/* Number */}
                 <div
                   style={{
                     fontSize: 'clamp(40px,6vw,64px)',
@@ -49,33 +48,26 @@ export default function StatsBanner() {
                     fontFamily: 'inherit',
                   }}
                 >
-                  {stat.display ? (
-                    stat.display
+                  {stat.prefix}
+                  {inView ? (
+                    <CountUp
+                      end={stat.value}
+                      duration={2.5}
+                      decimals={stat.decimal}
+                      separator=","
+                    />
                   ) : (
-                    <>
-                      {stat.prefix}
-                      {inView ? (
-                        <CountUp
-                          end={stat.value as number}
-                          duration={2.5}
-                          decimals={stat.decimal}
-                          separator=","
-                        />
-                      ) : (
-                        '0'
-                      )}
-                      {stat.suffix}
-                    </>
+                    '0'
                   )}
+                  {stat.suffix}
                 </div>
 
-                {/* Label */}
                 <p
                   style={{
-                    fontSize: '13px',
+                    fontSize: '12px',
                     fontWeight: 500,
                     color: 'rgba(255,255,255,0.55)',
-                    letterSpacing: '0.1em',
+                    letterSpacing: '0.12em',
                     textTransform: 'uppercase',
                     marginTop: '12px',
                   }}
@@ -86,6 +78,10 @@ export default function StatsBanner() {
             </ScrollReveal>
           ))}
         </div>
+
+        <p style={{ textAlign: 'center', fontSize: '11px', color: 'rgba(255,255,255,0.25)', marginTop: '24px' }}>
+          Source: DroneDeploy M3E RTK Accuracy Study, 2023 · 60 maps · 30 flights · 20-acre site
+        </p>
       </div>
 
       <style jsx>{`

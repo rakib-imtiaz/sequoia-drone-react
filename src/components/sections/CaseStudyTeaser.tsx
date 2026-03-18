@@ -3,8 +3,6 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useInView } from 'react-intersection-observer'
-import CountUp from 'react-countup'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import ClipReveal from '@/components/ui/ClipReveal'
 
@@ -25,8 +23,6 @@ const badgeItem = {
 }
 
 export default function CaseStudyTeaser() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 })
-
   return (
     <section style={{ backgroundColor: '#0a0a0a', padding: '80px 48px' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
@@ -81,7 +77,6 @@ export default function CaseStudyTeaser() {
 
               {/* Stats row */}
               <div
-                ref={ref}
                 style={{
                   display: 'flex',
                   gap: '32px',
@@ -91,20 +86,18 @@ export default function CaseStudyTeaser() {
               >
                 <div>
                   <div style={{ fontSize: '28px', fontWeight: 700, color: '#4DEBFF', lineHeight: 1 }}>
-                    ±2cm
+                    0.43&quot;
                   </div>
                   <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.45)', marginTop: '4px', letterSpacing: '0.05em' }}>
-                    RMS Accuracy
+                    Best RMS Accuracy
                   </div>
                 </div>
                 <div>
                   <div style={{ fontSize: '28px', fontWeight: 700, color: '#4DEBFF', lineHeight: 1 }}>
-                    {inView ? (
-                      <CountUp end={4.2} duration={2} decimals={1} />
-                    ) : '0'}ha
+                    1.02cm
                   </div>
                   <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.45)', marginTop: '4px', letterSpacing: '0.05em' }}>
-                    Site Coverage
+                    GCP Base Station RMS
                   </div>
                 </div>
                 <div>
@@ -112,7 +105,7 @@ export default function CaseStudyTeaser() {
                     48hrs
                   </div>
                   <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.45)', marginTop: '4px', letterSpacing: '0.05em' }}>
-                    Turnaround
+                    CAD Delivery
                   </div>
                 </div>
               </div>
@@ -170,8 +163,8 @@ export default function CaseStudyTeaser() {
           <ClipReveal delay={0.2}>
             <div style={{ position: 'relative', height: '100%', minHeight: '400px' }}>
               <Image
-                src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=800&q=80"
-                alt="Aerial topographic survey BC interior"
+                src="/images/survey-orthomosaic-top-down.jpg"
+                alt="Real drone orthomosaic aerial survey map"
                 fill
                 className="object-cover"
               />
@@ -202,11 +195,14 @@ export default function CaseStudyTeaser() {
                   padding: '16px 20px',
                 }}
               >
-                <div style={{ fontSize: '10px', fontWeight: 500, color: '#4DEBFF', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-                  VERIFIED ACCURACY
+                <div style={{ fontSize: '10px', fontWeight: 500, color: '#4DEBFF', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                  FIELD VERIFIED
                 </div>
-                <div style={{ fontSize: '24px', fontWeight: 700, color: '#ffffff', marginTop: '4px' }}>
-                  ±2cm RMS
+                <div style={{ fontSize: '20px', fontWeight: 700, color: '#ffffff', marginTop: '4px' }}>
+                  0.43&quot; RMS
+                </div>
+                <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.5)', marginTop: '4px' }}>
+                  DroneDeploy 2023
                 </div>
               </motion.div>
             </div>

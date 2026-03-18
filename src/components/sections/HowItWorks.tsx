@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import { motion, useScroll, useSpring } from 'framer-motion'
 import { ClipboardList, Radio, Cpu, FileDown } from 'lucide-react'
+import Image from 'next/image'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 
 const steps = [
@@ -12,6 +13,9 @@ const steps = [
     title: 'Flight Planning',
     desc: 'We define the survey boundary, set 80/70 image overlap, configure shutter speed, and plan the autonomous polygon mission.',
     tools: ['DJI Pilot 2', 'DJI Mavic 3 Enterprise'],
+    image: '/images/process-flight-plan-lawnmower.jpg',
+    imageAlt: 'Autonomous lawnmower flight plan pattern',
+    statBadge: '75/65 overlap · 120–200ft AGL',
   },
   {
     number: '02',
@@ -19,6 +23,9 @@ const steps = [
     title: 'PPK Ground Control',
     desc: 'Emlid RS3 base station is set up over a known NGS monument. Raw GNSS data is logged simultaneously with the drone flight.',
     tools: ['Emlid Reach RS3', 'NGS Monument'],
+    image: '/images/process-gcp-marker-ground.jpg',
+    imageAlt: 'GCP marker placement on survey site',
+    statBadge: 'GCP RMS: 1.02cm',
   },
   {
     number: '03',
@@ -26,13 +33,19 @@ const steps = [
     title: 'Data Processing',
     desc: 'Emlid Studio applies PPK corrections to image geotags. Pix4Dmatic runs photogrammetry to generate DSM, point cloud, and orthomosaic. Accuracy verified via RMS error report.',
     tools: ['Emlid Studio', 'Pix4Dmatic', 'Pix4Dsurvey'],
+    image: '/images/data-table-checkpoint-rmse.jpg',
+    imageAlt: 'RMSE checkpoint accuracy table from field study',
+    statBadge: 'RMSE X:0.35" Y:0.34" Z:0.28"',
   },
   {
     number: '04',
     icon: FileDown,
     title: 'CAD Deliverables',
     desc: 'Vectorized features and surface models are exported as DXF files for immediate use in AutoCAD Civil 3D.',
-    tools: ['AutoCAD Civil 3D', 'DXF', 'GeoTIFF', 'LAS/LAZ'],
+    tools: ['Pix4Dsurvey', 'AutoCAD Civil 3D'],
+    image: '/images/survey-orthomosaic-top-down.jpg',
+    imageAlt: 'Final orthomosaic deliverable top-down',
+    statBadge: '< 1 inch RMS · DXF in 48hrs',
   },
 ]
 
@@ -225,6 +238,27 @@ export default function HowItWorks() {
                             </span>
                           ))}
                         </div>
+                      </div>
+
+                      {/* Thumbnail */}
+                      <div style={{ position: 'relative', width: '100%', height: '80px', borderRadius: '8px', overflow: 'hidden', marginTop: '12px' }}>
+                        <Image src={step.image} alt={step.imageAlt} fill className="object-cover" />
+                      </div>
+
+                      {/* Stat badge */}
+                      <div
+                        style={{
+                          marginTop: '8px',
+                          backgroundColor: 'rgba(77,235,255,0.05)',
+                          border: '1px solid rgba(77,235,255,0.15)',
+                          borderRadius: '6px',
+                          padding: '4px 10px',
+                          fontSize: '11px',
+                          color: '#4DEBFF',
+                          fontWeight: 500,
+                        }}
+                      >
+                        {step.statBadge}
                       </div>
                     </div>
                   </div>

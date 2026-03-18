@@ -11,29 +11,33 @@ const hardwareItems = [
     name: 'DJI Mavic 3 Enterprise',
     tag: 'Aerial Survey',
     tagColor: '#4DEBFF',
-    desc: 'The gold standard for wide-area topographical mapping globally.',
-    image: 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&q=80',
+    desc: 'Mechanical global shutter. 4/3 CMOS. 0.7s capture. 45min flight.',
+    image: '/images/hardware-mavic3-enterprise-closeup.jpg',
+    alt: 'DJI Mavic 3 Enterprise RTK close-up',
   },
   {
     name: 'Emlid Reach RS3',
     tag: 'Ground Control',
     tagColor: '#E8612A',
-    desc: 'Multi-band RTK/PPK GNSS receiver providing centimeter-level accuracy.',
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80',
+    desc: 'Multi-band GNSS. PPK + RTK. 1.02cm base RMS. No internet needed.',
+    image: '/images/hardware-mavic3-rc-pro-controller.jpg',
+    alt: 'DJI M3E with RC Pro controller on survey ground',
   },
   {
     name: 'Leica BLK2GO',
     tag: 'LiDAR Scanning',
     tagColor: '#4CAF72',
-    desc: 'Handheld imaging laser scanner for rapid, agile mobile reality capture.',
-    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80',
+    desc: '420K pts/sec. SLAM. Walk-and-scan. BIM-ready in minutes.',
+    image: '/images/hardware-mavic3-hand-launch.jpg',
+    alt: 'Drone hardware at survey site',
   },
   {
     name: 'Pix4D Suite',
     tag: 'Processing',
     tagColor: '#4DEBFF',
-    desc: 'Advanced photogrammetry software translating raw data into 3D models.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
+    desc: 'Pix4Dmatic + Pix4Dsurvey. DSM, orthomosaic, DXF pipeline.',
+    image: '/images/data-chart-accuracy-comparison.jpg',
+    alt: 'M3E vs Air 2S accuracy comparison chart',
   },
 ]
 
@@ -98,7 +102,7 @@ export default function HardwareShowcase() {
                 >
                   <Image 
                     src={item.image} 
-                    alt={item.name}
+                    alt={item.alt}
                     fill
                     className="object-cover"
                   />
