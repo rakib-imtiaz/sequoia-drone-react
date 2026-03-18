@@ -124,6 +124,7 @@ export default function Navbar() {
             {/* Desktop CTA */}
             {!isMobile && (
               <MagneticButton
+                onClick={() => { window.location.href = '/contact' }}
                 style={{
                   backgroundColor: '#E8612A',
                   color: '#ffffff',
@@ -240,7 +241,10 @@ export default function Navbar() {
                     fontFamily: 'inherit',
                     letterSpacing: '-0.01em',
                   }}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={() => {
+                    setMobileOpen(false)
+                    window.location.href = '/contact'
+                  }}
                 >
                   Get a Quote
                 </button>

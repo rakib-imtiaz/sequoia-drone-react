@@ -6,10 +6,11 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 interface TiltCardProps {
   children: React.ReactNode
   className?: string
+  style?: React.CSSProperties
   maxDeg?: number
 }
 
-export default function TiltCard({ children, className, maxDeg = 8 }: TiltCardProps) {
+export default function TiltCard({ children, className, style, maxDeg = 8 }: TiltCardProps) {
   const [isTouchDevice, setIsTouchDevice] = useState(false)
 
   useEffect(() => {
@@ -40,7 +41,7 @@ export default function TiltCard({ children, className, maxDeg = 8 }: TiltCardPr
   }
 
   if (isTouchDevice) {
-    return <div className={className}>{children}</div>
+    return <div className={className} style={style}>{children}</div>
   }
 
   return (
@@ -48,7 +49,7 @@ export default function TiltCard({ children, className, maxDeg = 8 }: TiltCardPr
       className={className}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
-      style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
+      style={{ ...style, rotateX, rotateY, transformStyle: 'preserve-3d' }}
     >
       {children}
     </motion.div>

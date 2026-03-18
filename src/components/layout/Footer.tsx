@@ -192,7 +192,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="flex items-center justify-between flex-wrap gap-4">
           <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.25)' }}>
-            © 2024 Sequoia Drone Systems. All Rights Reserved.
+            &copy; {new Date().getFullYear()} Sequoia Drone Systems. All Rights Reserved.
           </p>
           <div className="flex items-center gap-6">
             {['Privacy Policy', 'Terms of Service'].map((label) => (
