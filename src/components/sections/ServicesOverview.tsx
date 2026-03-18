@@ -34,7 +34,7 @@ const services = [
       'Time-Series Change Detection',
       'Environmental Compliance Docs',
     ],
-    image: '/images/process-checkpoint-accuracy-map.jpg',
+    image: '/images/process-gcp-marker-ground.jpg',
     imageAlt: 'Aerial survey site with checkpoint markers',
   },
   {

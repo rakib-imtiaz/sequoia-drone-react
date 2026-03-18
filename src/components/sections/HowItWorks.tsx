@@ -1,10 +1,9 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useScroll, useSpring } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { ClipboardList, Radio, Cpu, FileDown } from 'lucide-react'
 import Image from 'next/image'
-import ScrollReveal from '@/components/ui/ScrollReveal'
+import { useRef } from 'react'
 
 const steps = [
   {
@@ -51,81 +50,135 @@ const steps = [
 
 export default function HowItWorks() {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start 80%', 'end 60%'],
-  })
-  const scaleX = useSpring(scrollYProgress, { stiffness: 60, damping: 20 })
+  const isInView = useInView(sectionRef, { once: true, margin: '-80px' })
 
   return (
     <section
       ref={sectionRef}
-      style={{ backgroundColor: '#111111', padding: '100px 48px' }}
+      style={{ backgroundColor: '#111111', padding: '120px 48px' }}
     >
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        {/* Header */}
-        <ScrollReveal>
-          <div style={{ textAlign: 'center', marginBottom: '64px' }}>
-            <p
-              style={{
-                fontSize: '11px',
-                fontWeight: 600,
-                letterSpacing: '0.15em',
-                color: 'rgba(255,255,255,0.35)',
-                textTransform: 'uppercase',
-                marginBottom: '16px',
-              }}
-            >
-              THE PROCESS
-            </p>
-            <h2
-              style={{
-                fontSize: 'clamp(28px, 4vw, 44px)',
-                fontWeight: 700,
-                color: '#ffffff',
-                lineHeight: 1.15,
-                marginBottom: '20px',
-              }}
-            >
-              From Site to Deliverable.
-            </h2>
-            <p
-              style={{
-                fontSize: '15px',
-                color: 'rgba(255,255,255,0.55)',
-                maxWidth: '520px',
-                margin: '0 auto',
-                lineHeight: 1.65,
-              }}
-            >
-              A proven 4-step pipeline that produces centimeter-accurate CAD files your engineering team can use immediately.
-            </p>
-          </div>
-        </ScrollReveal>
+      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
 
-        {/* Steps */}
-        <div style={{ position: 'relative' }}>
-          {/* Animated connecting line */}
-          <div
-            className="connecting-line"
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          style={{ textAlign: 'center', marginBottom: '80px' }}
+        >
+          <p
             style={{
-              position: 'absolute',
-              top: '26px',
-              left: '13%',
-              right: '13%',
-              height: '1px',
-              background: 'rgba(255,255,255,0.06)',
-              overflow: 'hidden',
+              fontSize: '11px',
+              fontWeight: 600,
+              letterSpacing: '0.18em',
+              color: 'rgba(255,255,255,0.35)',
+              textTransform: 'uppercase',
+              marginBottom: '18px',
             }}
           >
+            THE PROCESS
+          </p>
+          <h2
+            style={{
+              fontSize: 'clamp(30px, 4vw, 48px)',
+              fontWeight: 700,
+              color: '#ffffff',
+              lineHeight: 1.1,
+              marginBottom: '20px',
+              letterSpacing: '-0.02em',
+            }}
+          >
+            From Site to Deliverable.
+          </h2>
+          <p
+            style={{
+              fontSize: '16px',
+              color: 'rgba(255,255,255,0.5)',
+              maxWidth: '540px',
+              margin: '0 auto',
+              lineHeight: 1.7,
+            }}
+          >
+            A proven 4-step pipeline that produces centimeter-accurate CAD files your engineering team can use immediately.
+          </p>
+        </motion.div>
+
+        {/* Timeline + Cards */}
+        <div style={{ position: 'relative' }}>
+
+          {/* Timeline row */}
+          <div
+            className="timeline-row"
+            style={{
+              position: 'relative',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+            }}
+          >
+            {/* Connecting line */}
             <motion.div
+              initial={{ scaleX: 0 }}
+              animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
+              transition={{ duration: 1.1, delay: 0.3, ease: 'easeInOut' }}
               style={{
-                height: '100%',
-                background: 'linear-gradient(to right, #4DEBFF, #4CAF72)',
-                scaleX,
-                transformOrigin: '0%',
+                position: 'absolute',
+                top: '22px',
+                left: 'calc(12.5%)',
+                right: 'calc(12.5%)',
+                height: '1px',
+                background:
+                  'linear-gradient(90deg, transparent 0%, rgba(77,235,255,0.5) 20%, rgba(77,235,255,0.5) 80%, transparent 100%)',
+                transformOrigin: 'left center',
               }}
             />
+
+            {/* Step circles */}
+            {steps.map((step, i) => (
+              <motion.div
+                key={step.number}
+                initial={{ opacity: 0, scale: 0.3 }}
+                animate={
+                  isInView
+                    ? { opacity: 1, scale: 1 }
+                    : { opacity: 0, scale: 0.3 }
+                }
+                transition={{
+                  duration: 0.45,
+                  delay: 0.45 + i * 0.15,
+                  type: 'spring',
+                  stiffness: 260,
+                  damping: 20,
+                }}
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  paddingBottom: '28px',
+                  position: 'relative',
+                  zIndex: 2,
+                }}
+              >
+                <div
+                  style={{
+                    width: '44px',
+                    height: '44px',
+                    borderRadius: '50%',
+                    backgroundColor: '#111111',
+                    border: '1.5px solid rgba(77,235,255,0.45)',
+                    boxShadow:
+                      '0 0 18px rgba(77,235,255,0.2), inset 0 0 12px rgba(77,235,255,0.05)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '13px',
+                    fontWeight: 700,
+                    color: '#4DEBFF',
+                    letterSpacing: '0.05em',
+                  }}
+                >
+                  {step.number}
+                </div>
+              </motion.div>
+            ))}
           </div>
 
           {/* Step cards */}
@@ -134,135 +187,166 @@ export default function HowItWorks() {
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '0',
+              gap: '20px',
             }}
           >
             {steps.map((step, i) => {
               const Icon = step.icon
-              const isLast = i === steps.length - 1
               return (
-                <ScrollReveal key={step.number} delay={i * 0.1} y={30}>
-                  <div
-                    style={{
-                      padding: '32px 24px',
-                      position: 'relative',
-                      borderRight: isLast ? 'none' : '1px solid rgba(255,255,255,0.06)',
-                    }}
-                  >
-                    {/* Watermark number */}
+                <motion.div
+                  key={step.number}
+                  initial={{ opacity: 0, y: 60 }}
+                  animate={
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }
+                  }
+                  transition={{
+                    duration: 0.65,
+                    delay: i * 0.15,
+                    ease: 'easeOut',
+                  }}
+                  whileHover={{ y: -6, transition: { duration: 0.25 } }}
+                  style={{
+                    backgroundColor: 'rgba(255,255,255,0.03)',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    borderRadius: '18px',
+                    overflow: 'hidden',
+                    display: 'flex',
+                    flexDirection: 'column',
+                  }}
+                >
+                  {/* Image */}
+                  <div style={{ position: 'relative', height: '220px', flexShrink: 0 }}>
+                    <Image
+                      src={step.image}
+                      alt={step.imageAlt}
+                      fill
+                      className="object-cover"
+                    />
+                    <div
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background:
+                          'linear-gradient(to bottom, rgba(10,10,10,0.1) 0%, transparent 40%, rgba(10,10,10,0.75) 100%)',
+                      }}
+                    />
+                    {/* Top accent line */}
                     <div
                       style={{
                         position: 'absolute',
                         top: 0,
-                        left: '24px',
-                        fontSize: '64px',
-                        fontWeight: 700,
-                        color: 'rgba(77,235,255,0.08)',
-                        lineHeight: 1,
-                        userSelect: 'none',
-                        zIndex: 0,
+                        left: 0,
+                        right: 0,
+                        height: '2px',
+                        background:
+                          'linear-gradient(90deg, transparent, rgba(77,235,255,0.6), transparent)',
+                      }}
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <div
+                    style={{
+                      padding: '28px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      flex: 1,
+                    }}
+                  >
+                    {/* Icon + title */}
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '13px',
+                        marginBottom: '14px',
                       }}
                     >
-                      {step.number}
-                    </div>
-
-                    {/* Content */}
-                    <div style={{ position: 'relative', zIndex: 1 }}>
-                      {/* Icon circle */}
                       <div
                         style={{
-                          width: '52px',
-                          height: '52px',
-                          borderRadius: '50%',
+                          width: '40px',
+                          height: '40px',
+                          borderRadius: '10px',
                           backgroundColor: 'rgba(77,235,255,0.08)',
-                          border: '1.5px solid rgba(77,235,255,0.3)',
+                          border: '1px solid rgba(77,235,255,0.22)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
                           flexShrink: 0,
                         }}
                       >
-                        <Icon size={22} style={{ color: '#4DEBFF' }} />
+                        <Icon size={20} style={{ color: '#4DEBFF' }} />
                       </div>
-
                       <h3
                         style={{
                           fontWeight: 600,
-                          fontSize: '20px',
+                          fontSize: '18px',
                           color: '#ffffff',
-                          marginTop: '20px',
+                          lineHeight: 1.2,
+                          letterSpacing: '-0.01em',
                         }}
                       >
                         {step.title}
                       </h3>
+                    </div>
 
-                      <p
-                        style={{
-                          fontSize: '14px',
-                          color: 'rgba(255,255,255,0.55)',
-                          lineHeight: 1.65,
-                          marginTop: '12px',
-                        }}
-                      >
-                        {step.desc}
-                      </p>
+                    <p
+                      style={{
+                        fontSize: '13.5px',
+                        color: 'rgba(255,255,255,0.52)',
+                        lineHeight: 1.7,
+                        marginBottom: '18px',
+                      }}
+                    >
+                      {step.desc}
+                    </p>
 
-                      {/* Tools */}
-                      <div style={{ marginTop: '16px' }}>
-                        <div
+                    {/* Tool chips */}
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        gap: '6px',
+                        marginBottom: '18px',
+                      }}
+                    >
+                      {step.tools.map((tool) => (
+                        <span
+                          key={tool}
                           style={{
-                            fontSize: '10px',
-                            fontWeight: 500,
-                            color: 'rgba(255,255,255,0.3)',
-                            letterSpacing: '0.1em',
-                            textTransform: 'uppercase',
-                            marginBottom: '6px',
+                            backgroundColor: 'rgba(255,255,255,0.04)',
+                            border: '1px solid rgba(255,255,255,0.1)',
+                            borderRadius: '6px',
+                            padding: '4px 10px',
+                            fontSize: '11.5px',
+                            color: 'rgba(255,255,255,0.42)',
+                            letterSpacing: '0.01em',
                           }}
                         >
-                          TOOLS:
-                        </div>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                          {step.tools.map((tool) => (
-                            <span
-                              key={tool}
-                              style={{
-                                backgroundColor: 'rgba(255,255,255,0.05)',
-                                border: '1px solid rgba(255,255,255,0.08)',
-                                borderRadius: '6px',
-                                padding: '3px 10px',
-                                fontSize: '11px',
-                                color: 'rgba(255,255,255,0.45)',
-                              }}
-                            >
-                              {tool}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
+                          {tool}
+                        </span>
+                      ))}
+                    </div>
 
-                      {/* Thumbnail */}
-                      <div style={{ position: 'relative', width: '100%', height: '80px', borderRadius: '8px', overflow: 'hidden', marginTop: '12px' }}>
-                        <Image src={step.image} alt={step.imageAlt} fill className="object-cover" />
-                      </div>
-
-                      {/* Stat badge */}
+                    {/* Stat badge */}
+                    <div style={{ marginTop: 'auto' }}>
                       <div
                         style={{
-                          marginTop: '8px',
-                          backgroundColor: 'rgba(77,235,255,0.05)',
-                          border: '1px solid rgba(77,235,255,0.15)',
-                          borderRadius: '6px',
-                          padding: '4px 10px',
-                          fontSize: '11px',
+                          backgroundColor: 'rgba(77,235,255,0.07)',
+                          border: '1px solid rgba(77,235,255,0.22)',
+                          borderRadius: '10px',
+                          padding: '10px 14px',
+                          fontSize: '12.5px',
                           color: '#4DEBFF',
-                          fontWeight: 500,
+                          fontWeight: 600,
+                          letterSpacing: '0.01em',
                         }}
                       >
                         {step.statBadge}
                       </div>
                     </div>
                   </div>
-                </ScrollReveal>
+                </motion.div>
               )
             })}
           </div>
@@ -274,8 +358,16 @@ export default function HowItWorks() {
           .steps-grid {
             grid-template-columns: 1fr !important;
           }
-          .connecting-line {
-            display: none;
+          .timeline-row {
+            display: none !important;
+          }
+        }
+        @media (max-width: 1100px) and (min-width: 769px) {
+          .steps-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+          .timeline-row {
+            grid-template-columns: repeat(2, 1fr) !important;
           }
         }
       `}</style>
