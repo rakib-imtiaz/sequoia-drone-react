@@ -27,15 +27,23 @@ export default function StoryAbout() {
               </div>
             </div>
             
-            <div style={{ position: 'relative', borderRadius: '24px', overflow: 'hidden', aspectRatio: '4/5', boxShadow: '0 24px 48px rgba(0,0,0,0.08)' }}>
-              <Image 
-                src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=800&q=80" 
-                alt="Surveyor operating drone" 
-                fill 
-                className="object-cover"
-                style={{ filter: 'grayscale(20%)' }}
-              />
-              <div style={{ position: 'absolute', inset: 0, border: '1px solid rgba(0,0,0,0.05)', borderRadius: '24px' }} />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <div style={{ position: 'relative', borderRadius: '16px', overflow: 'hidden', height: '340px', boxShadow: '0 16px 40px rgba(0,0,0,0.1)' }}>
+                <Image
+                  src="/images/about-drone-pilot-operator-hd.jpg"
+                  alt="Professional drone operator in hi-vis vest at survey site"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div style={{ position: 'relative', borderRadius: '16px', overflow: 'hidden', height: '220px', boxShadow: '0 16px 40px rgba(0,0,0,0.1)' }}>
+                <Image
+                  src="/images/hardware-mavic3-rc-pro-controller.jpg"
+                  alt="DJI M3E with RC Pro controller on survey ground"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
           </div>
         </ScrollReveal>

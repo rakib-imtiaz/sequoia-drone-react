@@ -116,8 +116,8 @@ export default function IndustriesHero() {
           {/* Top Left */}
           <div style={{ position: 'relative', height: '160px', borderRadius: '12px', overflow: 'hidden', transform: 'translateY(16px)' }}>
             <Image
-              src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=400&q=80"
-              alt="BC Forest Canopy"
+              src="/images/survey-orthomosaic-top-down.jpg"
+              alt="Aerial drone survey map"
               fill
               className="object-cover"
             />
@@ -125,8 +125,8 @@ export default function IndustriesHero() {
           {/* Top Right */}
           <div style={{ position: 'relative', height: '160px', borderRadius: '12px', overflow: 'hidden' }}>
             <Image
-              src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=400&q=80"
-              alt="Construction Site"
+              src="/images/about-drone-pilot-operator-hd.jpg"
+              alt="Professional drone operator"
               fill
               className="object-cover"
             />
@@ -134,8 +134,8 @@ export default function IndustriesHero() {
           {/* Bottom Left */}
           <div style={{ position: 'relative', height: '160px', borderRadius: '12px', overflow: 'hidden', transform: 'translateY(16px)' }}>
             <Image
-              src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&q=80"
-              alt="Farmland"
+              src="/images/process-flight-plan-lawnmower.jpg"
+              alt="Autonomous flight planning"
               fill
               className="object-cover"
             />
@@ -143,8 +143,8 @@ export default function IndustriesHero() {
           {/* Bottom Right */}
           <div style={{ position: 'relative', height: '160px', borderRadius: '12px', overflow: 'hidden' }}>
             <Image
-              src="https://images.unsplash.com/photo-1578507065211-1c4e99a5fd24?w=400&q=80"
-              alt="Mining Site"
+              src="/images/hardware-mavic3-enterprise-closeup.jpg"
+              alt="DJI Mavic 3 Enterprise hardware"
               fill
               className="object-cover"
             />

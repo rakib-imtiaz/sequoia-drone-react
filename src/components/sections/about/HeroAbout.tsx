@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import StaggerText from '@/components/ui/StaggerText'
 
 export default function HeroAbout() {
@@ -17,6 +18,18 @@ export default function HeroAbout() {
         overflow: 'hidden'
       }}
     >
+      {/* Background image */}
+      <Image
+        src="/images/hero-mavic3-construction-site.jpg"
+        alt="DJI Mavic 3 Enterprise in flight"
+        fill
+        className="object-cover"
+        style={{ zIndex: 0 }}
+        priority
+      />
+      {/* Dark overlay */}
+      <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.72)', zIndex: 1 }} />
+
       {/* Animated Gradient Orb */}
       <motion.div
         animate={{
@@ -39,12 +52,12 @@ export default function HeroAbout() {
           maxHeight: '800px',
           background: 'radial-gradient(circle, rgba(77,235,255,0.15) 0%, rgba(232,97,42,0.05) 40%, transparent 70%)',
           filter: 'blur(60px)',
-          zIndex: 0,
+          zIndex: 2,
           pointerEvents: 'none'
         }}
       />
 
-      <div style={{ position: 'relative', zIndex: 1, maxWidth: '800px', textAlign: 'center' }}>
+      <div style={{ position: 'relative', zIndex: 3, maxWidth: '800px', textAlign: 'center' }}>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
