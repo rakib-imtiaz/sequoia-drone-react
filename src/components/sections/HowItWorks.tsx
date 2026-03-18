@@ -10,25 +10,29 @@ const steps = [
     number: '01',
     icon: ClipboardList,
     title: 'Flight Planning',
-    desc: 'Polygon mission, 80/70 overlap. DJI Pilot 2 app.',
+    desc: 'We define the survey boundary, set 80/70 image overlap, configure shutter speed, and plan the autonomous polygon mission.',
+    tools: ['DJI Pilot 2', 'DJI Mavic 3 Enterprise'],
   },
   {
     number: '02',
     icon: Radio,
-    title: 'Ground Control',
-    desc: 'Emlid RS3 base station. PPK raw data logging in field.',
+    title: 'PPK Ground Control',
+    desc: 'Emlid RS3 base station is set up over a known NGS monument. Raw GNSS data is logged simultaneously with the drone flight.',
+    tools: ['Emlid Reach RS3', 'NGS Monument'],
   },
   {
     number: '03',
     icon: Cpu,
-    title: 'Processing',
-    desc: 'Emlid Studio PPK correction + Pix4Dmatic photogrammetry.',
+    title: 'Data Processing',
+    desc: 'Emlid Studio applies PPK corrections to image geotags. Pix4Dmatic runs photogrammetry to generate DSM, point cloud, and orthomosaic. Accuracy verified via RMS error report.',
+    tools: ['Emlid Studio', 'Pix4Dmatic', 'Pix4Dsurvey'],
   },
   {
     number: '04',
     icon: FileDown,
-    title: 'Deliverables',
-    desc: 'DXF, orthomosaic, point cloud — formatted for your workflow.',
+    title: 'CAD Deliverables',
+    desc: 'Vectorized features and surface models are exported as DXF files for immediate use in AutoCAD Civil 3D.',
+    tools: ['AutoCAD Civil 3D', 'DXF', 'GeoTIFF', 'LAS/LAZ'],
   },
 ]
 
@@ -43,47 +47,61 @@ export default function HowItWorks() {
   return (
     <section
       ref={sectionRef}
-      style={{ backgroundColor: '#0a0a0a', padding: '80px 48px' }}
+      style={{ backgroundColor: '#111111', padding: '100px 48px' }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         {/* Header */}
         <ScrollReveal>
-          <p
-            className="eyebrow"
-            style={{ color: 'rgba(255,255,255,0.35)', marginBottom: '12px' }}
-          >
-            THE PROCESS
-          </p>
-          <h2
-            style={{
-              fontSize: 'clamp(28px,4vw,44px)',
-              fontWeight: 700,
-              color: '#ffffff',
-              lineHeight: 1.15,
-            }}
-          >
-            Simple Steps. Precise Results.
-          </h2>
+          <div style={{ textAlign: 'center', marginBottom: '64px' }}>
+            <p
+              style={{
+                fontSize: '11px',
+                fontWeight: 600,
+                letterSpacing: '0.15em',
+                color: 'rgba(255,255,255,0.35)',
+                textTransform: 'uppercase',
+                marginBottom: '16px',
+              }}
+            >
+              THE PROCESS
+            </p>
+            <h2
+              style={{
+                fontSize: 'clamp(28px, 4vw, 44px)',
+                fontWeight: 700,
+                color: '#ffffff',
+                lineHeight: 1.15,
+                marginBottom: '20px',
+              }}
+            >
+              From Site to Deliverable.
+            </h2>
+            <p
+              style={{
+                fontSize: '15px',
+                color: 'rgba(255,255,255,0.55)',
+                maxWidth: '520px',
+                margin: '0 auto',
+                lineHeight: 1.65,
+              }}
+            >
+              A proven 4-step pipeline that produces centimeter-accurate CAD files your engineering team can use immediately.
+            </p>
+          </div>
         </ScrollReveal>
 
         {/* Steps */}
-        <div
-          style={{
-            marginTop: '60px',
-            position: 'relative',
-          }}
-        >
+        <div style={{ position: 'relative' }}>
           {/* Animated connecting line */}
           <div
             className="connecting-line"
             style={{
               position: 'absolute',
-              top: '20px',
-              left: '20px',
-              right: '20px',
-              height: '1.5px',
+              top: '26px',
+              left: '13%',
+              right: '13%',
+              height: '1px',
               background: 'rgba(255,255,255,0.06)',
-              borderRadius: '1px',
               overflow: 'hidden',
             }}
           >
@@ -93,7 +111,6 @@ export default function HowItWorks() {
                 background: 'linear-gradient(to right, #4DEBFF, #4CAF72)',
                 scaleX,
                 transformOrigin: '0%',
-                borderRadius: '1px',
               }}
             />
           </div>
@@ -104,55 +121,112 @@ export default function HowItWorks() {
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '24px',
+              gap: '0',
             }}
           >
             {steps.map((step, i) => {
               const Icon = step.icon
+              const isLast = i === steps.length - 1
               return (
                 <ScrollReveal key={step.number} delay={i * 0.1} y={30}>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                    {/* Icon above badge */}
-                    <Icon
-                      size={20}
-                      style={{ color: 'rgba(255,255,255,0.35)' }}
-                    />
-                    {/* Number badge */}
+                  <div
+                    style={{
+                      padding: '32px 24px',
+                      position: 'relative',
+                      borderRight: isLast ? 'none' : '1px solid rgba(255,255,255,0.06)',
+                    }}
+                  >
+                    {/* Watermark number */}
                     <div
                       style={{
-                        width: '40px',
-                        height: '40px',
-                        borderRadius: '50%',
-                        border: '1.5px solid #4DEBFF',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: '16px',
-                        fontWeight: 600,
-                        color: '#4DEBFF',
-                        flexShrink: 0,
+                        position: 'absolute',
+                        top: 0,
+                        left: '24px',
+                        fontSize: '64px',
+                        fontWeight: 700,
+                        color: 'rgba(77,235,255,0.08)',
+                        lineHeight: 1,
+                        userSelect: 'none',
+                        zIndex: 0,
                       }}
                     >
-                      {i + 1}
+                      {step.number}
                     </div>
-                    <h3
-                      style={{
-                        fontWeight: 600,
-                        fontSize: '17px',
-                        color: '#ffffff',
-                      }}
-                    >
-                      {step.title}
-                    </h3>
-                    <p
-                      style={{
-                        fontSize: '13px',
-                        color: 'rgba(255,255,255,0.55)',
-                        lineHeight: 1.55,
-                      }}
-                    >
-                      {step.desc}
-                    </p>
+
+                    {/* Content */}
+                    <div style={{ position: 'relative', zIndex: 1 }}>
+                      {/* Icon circle */}
+                      <div
+                        style={{
+                          width: '52px',
+                          height: '52px',
+                          borderRadius: '50%',
+                          backgroundColor: 'rgba(77,235,255,0.08)',
+                          border: '1.5px solid rgba(77,235,255,0.3)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          flexShrink: 0,
+                        }}
+                      >
+                        <Icon size={22} style={{ color: '#4DEBFF' }} />
+                      </div>
+
+                      <h3
+                        style={{
+                          fontWeight: 600,
+                          fontSize: '20px',
+                          color: '#ffffff',
+                          marginTop: '20px',
+                        }}
+                      >
+                        {step.title}
+                      </h3>
+
+                      <p
+                        style={{
+                          fontSize: '14px',
+                          color: 'rgba(255,255,255,0.55)',
+                          lineHeight: 1.65,
+                          marginTop: '12px',
+                        }}
+                      >
+                        {step.desc}
+                      </p>
+
+                      {/* Tools */}
+                      <div style={{ marginTop: '16px' }}>
+                        <div
+                          style={{
+                            fontSize: '10px',
+                            fontWeight: 500,
+                            color: 'rgba(255,255,255,0.3)',
+                            letterSpacing: '0.1em',
+                            textTransform: 'uppercase',
+                            marginBottom: '6px',
+                          }}
+                        >
+                          TOOLS:
+                        </div>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                          {step.tools.map((tool) => (
+                            <span
+                              key={tool}
+                              style={{
+                                backgroundColor: 'rgba(255,255,255,0.05)',
+                                border: '1px solid rgba(255,255,255,0.08)',
+                                borderRadius: '6px',
+                                padding: '3px 10px',
+                                fontSize: '11px',
+                                color: 'rgba(255,255,255,0.45)',
+                              }}
+                            >
+                              {tool}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </ScrollReveal>
               )

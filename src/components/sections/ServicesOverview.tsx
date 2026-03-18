@@ -9,24 +9,45 @@ import Image from 'next/image'
 const services = [
   {
     icon: Map,
-    title: 'Precision Surveying',
-    desc: 'Advanced survey-grade data collection for complex industrial landscapes and terrain mapping.',
-    borderCol: '#4DEBFF', // Cyan
-    image: 'https://images.unsplash.com/photo-1541888087425-d81bb192a2a7?w=600&q=80',
+    title: 'Survey & Engineering',
+    desc: 'PPK-corrected aerial data processed into CAD-ready deliverables for engineers and land surveyors.',
+    borderCol: '#4DEBFF',
+    outputsColor: '#4DEBFF',
+    outputs: [
+      'Orthomosaic Maps (GeoTIFF)',
+      'DXF Feature Extraction',
+      'TIN Surface + Contours',
+      'AutoCAD Civil 3D Ready',
+    ],
+    image: 'https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=600&q=80',
   },
   {
     icon: Leaf,
-    title: 'Ecosystem Management',
-    desc: 'Comprehensive monitoring and real-time protection for forest canopies and endangered bio-sectors.',
-    borderCol: '#4CAF72', // Green
-    image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80',
+    title: 'Environmental Intelligence',
+    desc: 'Multispectral and thermal imaging for forestry, agriculture, and environmental compliance in BC.',
+    borderCol: '#4CAF72',
+    outputsColor: '#4CAF72',
+    outputs: [
+      'NDVI / Multispectral Maps',
+      'Canopy Health Reports',
+      'Biomass Estimation',
+      'Time-Series Monitoring',
+    ],
+    image: 'https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&q=80',
   },
   {
     icon: Waves,
-    title: 'LiDAR Scanning',
-    desc: 'Penetrate dense foliage to map bare earth models. Vital for forestry and floodplain engineering.',
-    borderCol: '#E8612A', // Orange
-    image: 'https://images.unsplash.com/photo-1578507065211-1c4e99a5fd24?w=600&q=80',
+    title: 'LiDAR Indoor Scanning',
+    desc: 'Handheld Leica BLK2GO scanning delivers BIM-ready point clouds for buildings and structures.',
+    borderCol: '#E8612A',
+    outputsColor: '#E8612A',
+    outputs: [
+      '3D Point Cloud (LAS/LAZ)',
+      'BIM-Ready E57 Files',
+      'As-Built Floor Plans',
+      'Revit / AutoCAD Import',
+    ],
+    image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80',
   },
 ]
 
@@ -34,39 +55,34 @@ export default function ServicesOverview() {
   return (
     <section style={{ backgroundColor: '#0a0a0a', padding: '120px 48px' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        
+
         <ScrollReveal>
           <div style={{ marginBottom: '64px' }}>
             <div style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.15em', color: '#666666', textTransform: 'uppercase', marginBottom: '16px' }}>
               Core Disciplines
             </div>
             <h2 style={{ fontSize: 'clamp(32px, 5vw, 48px)', fontWeight: 700, color: '#ffffff', lineHeight: 1.1 }}>
-              Two Disciplines. One Platform.
+              What We Deliver.
             </h2>
             <p style={{ fontSize: '16px', color: '#888888', maxWidth: '600px', marginTop: '20px', lineHeight: 1.6 }}>
-              We fuse precision engineering with deep environmental intelligence, providing a unified dataset for your most complex projects.
+              Every flight produces survey-grade, CAD-ready outputs formatted for your existing engineering workflow.
             </p>
           </div>
         </ScrollReveal>
 
-        <div 
+        <div
           className="services-grid"
-          style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', 
-            gap: '32px' 
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: '32px',
           }}
         >
           {services.map((svc, i) => {
             const Icon = svc.icon
             return (
               <ScrollReveal key={svc.title} delay={i * 0.1}>
-                {/* 
-                  Using a group class logic directly or via framer-motion approach.
-                  We'll use standard motion for onHover interactions.
-                */}
-                <motion.div 
-                  className="service-card group"
+                <motion.div
                   whileHover="hover"
                   initial="initial"
                   style={{
@@ -76,18 +92,18 @@ export default function ServicesOverview() {
                     borderLeft: `4px solid ${svc.borderCol}`,
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '24px',
+                    gap: '20px',
                     height: '100%',
                     position: 'relative',
                     overflow: 'hidden',
-                    transition: 'background-color 0.4s ease'
+                    transition: 'background-color 0.4s ease',
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.03)'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#111111'}
+                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.03)')}
+                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#111111')}
                 >
                   <Icon size={40} style={{ color: svc.borderCol }} />
-                  
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', flexGrow: 1 }}>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                     <h3 style={{ fontSize: '24px', fontWeight: 700, color: '#ffffff' }}>
                       {svc.title}
                     </h3>
@@ -96,27 +112,39 @@ export default function ServicesOverview() {
                     </p>
                   </div>
 
-                  {/* Image container that becomes colored on hover */}
-                  <div 
-                    style={{ 
-                      marginTop: '16px', 
-                      borderRadius: '12px', 
-                      overflow: 'hidden', 
-                      height: '160px', 
+                  {/* Deliverables list */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                    <div style={{ fontSize: '10px', fontWeight: 500, color: svc.outputsColor, letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '8px' }}>
+                      OUTPUTS
+                    </div>
+                    {svc.outputs.map((item) => (
+                      <span key={item} style={{ fontSize: '12px', color: 'rgba(255,255,255,0.5)', lineHeight: 1.5 }}>
+                        → {item}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Image */}
+                  <div
+                    style={{
+                      marginTop: '8px',
+                      borderRadius: '12px',
+                      overflow: 'hidden',
+                      height: '160px',
                       position: 'relative',
-                      backgroundColor: '#000'
+                      backgroundColor: '#000',
                     }}
                   >
                     <motion.div
                       variants={{
                         initial: { filter: 'grayscale(100%)', opacity: 0.4 },
-                        hover: { filter: 'grayscale(0%)', opacity: 1, scale: 1.05 }
+                        hover: { filter: 'grayscale(0%)', opacity: 1, scale: 1.05 },
                       }}
                       transition={{ duration: 0.5, ease: 'easeOut' }}
                       style={{ position: 'absolute', inset: 0 }}
                     >
-                      <Image 
-                        src={svc.image} 
+                      <Image
+                        src={svc.image}
                         alt={svc.title}
                         fill
                         className="object-cover"
@@ -128,7 +156,32 @@ export default function ServicesOverview() {
             )
           })}
         </div>
+
+        {/* Bottom strip */}
+        <ScrollReveal delay={0.2}>
+          <div
+            style={{
+              marginTop: '32px',
+              backgroundColor: 'rgba(0,0,0,0.3)',
+              borderRadius: '12px',
+              padding: '16px 24px',
+              textAlign: 'center',
+            }}
+          >
+            <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', fontWeight: 400 }}>
+              All deliverables formatted for your existing workflow — DXF, DWG, GeoTIFF, LAS/LAZ, E57, IFC
+            </p>
+          </div>
+        </ScrollReveal>
       </div>
+
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .services-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </section>
   )
 }
