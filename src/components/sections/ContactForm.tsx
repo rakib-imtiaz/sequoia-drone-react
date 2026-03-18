@@ -6,6 +6,26 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { CheckCircle2, Crosshair } from 'lucide-react'
 
+const inputStyle: React.CSSProperties = {
+  backgroundColor: '#0a0a0a',
+  border: '1px solid rgba(255,255,255,0.1)',
+  borderRadius: '12px',
+  padding: '16px',
+  color: '#ffffff',
+  fontSize: '15px',
+  width: '100%',
+  outline: 'none',
+  fontFamily: 'inherit',
+  transition: 'border-color 0.2s, box-shadow 0.2s',
+  boxSizing: 'border-box',
+}
+
+const inputFocusStyle: React.CSSProperties = {
+  ...inputStyle,
+  borderColor: '#E8612A',
+  boxShadow: '0 0 0 2px rgba(232,97,42,0.2)',
+}
+
 export default function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle')
 
@@ -45,7 +65,7 @@ export default function ContactForm() {
             <div style={{ position: 'relative', minHeight: '380px' }}>
               <AnimatePresence mode="wait">
                 {status !== 'success' ? (
-                  <motion.form 
+                  <motion.form
                     key="form"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -54,34 +74,43 @@ export default function ContactForm() {
                     style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}
                   >
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-                      <input 
+                      <input
                         required
-                        type="text" 
-                        placeholder="Your Name" 
-                        className="dark-input"
+                        type="text"
+                        placeholder="Your Name"
+                        style={inputStyle}
+                        onFocus={e => Object.assign(e.currentTarget.style, inputFocusStyle)}
+                        onBlur={e => Object.assign(e.currentTarget.style, inputStyle)}
                       />
-                      <input 
+                      <input
                         required
-                        type="email" 
-                        placeholder="Email Address" 
-                        className="dark-input"
+                        type="email"
+                        placeholder="Email Address"
+                        style={inputStyle}
+                        onFocus={e => Object.assign(e.currentTarget.style, inputFocusStyle)}
+                        onBlur={e => Object.assign(e.currentTarget.style, inputStyle)}
                       />
                     </div>
-                    
-                    <select required className="dark-input" defaultValue="">
+
+                    <select
+                      required
+                      defaultValue=""
+                      style={{ ...inputStyle, backgroundImage: `url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23888888%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 16px top 50%', backgroundSize: '12px auto', appearance: 'none' as const }}
+                    >
                       <option value="" disabled>Select Industry</option>
                       <option value="surveying">Land Surveying</option>
-                      <option value="engineering">Engineering & Construction</option>
-                      <option value="forestry">Forestry & Environment</option>
-                      <option value="mining">Mining & Industrial</option>
+                      <option value="engineering">Engineering &amp; Construction</option>
+                      <option value="forestry">Forestry &amp; Environment</option>
+                      <option value="mining">Mining &amp; Industrial</option>
                     </select>
 
-                    <textarea 
+                    <textarea
                       required
-                      placeholder="Project Details" 
+                      placeholder="Project Details"
                       rows={4}
-                      className="dark-input"
-                      style={{ resize: 'vertical', minHeight: '120px' }}
+                      style={{ ...inputStyle, resize: 'vertical', minHeight: '120px' }}
+                      onFocus={e => Object.assign(e.currentTarget.style, inputFocusStyle)}
+                      onBlur={e => Object.assign(e.currentTarget.style, { ...inputStyle, resize: 'vertical', minHeight: '120px' })}
                     />
 
                     <button 
@@ -142,11 +171,12 @@ export default function ContactForm() {
         {/* RIGHT — IMAGE GRAPHIC */}
         <ScrollReveal delay={0.2}>
           <div style={{ position: 'relative' }}>
-            <div 
-              style={{ 
-                position: 'relative', 
-                borderRadius: '24px', 
-                overflow: 'hidden', 
+            {/* Image container — overflow:hidden only clips the image */}
+            <div
+              style={{
+                position: 'relative',
+                borderRadius: '24px',
+                overflow: 'hidden',
                 aspectRatio: '1/1',
                 border: '1px solid rgba(255,255,255,0.05)'
               }}
@@ -158,48 +188,48 @@ export default function ContactForm() {
                 className="object-cover"
                 style={{ opacity: 0.6 }}
               />
-              
               {/* Gradient Overlay */}
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top right, rgba(232,97,42,0.1), transparent)' }} />
-              
-              {/* Center Glass Card */}
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  background: 'rgba(17,17,17,0.6)',
-                  backdropFilter: 'blur(16px)',
-                  WebkitBackdropFilter: 'blur(16px)',
-                  padding: '40px',
-                  borderRadius: '24px',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  textAlign: 'center',
-                  width: '75%',
-                  boxShadow: '0 24px 48px rgba(0,0,0,0.4)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  gap: '8px'
-                }}
-              >
-                <Crosshair size={32} color="#4DEBFF" style={{ marginBottom: '8px' }} />
-                <h4 style={{ fontSize: 'clamp(48px, 7vw, 72px)', fontWeight: 700, color: '#ffffff', lineHeight: 1 }}>
-                  &lt; 1&quot;
-                </h4>
-                <p style={{ fontSize: '13px', fontWeight: 500, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-                  RMS Absolute Accuracy
-                </p>
-                <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.35)', marginTop: '4px' }}>
-                  DroneDeploy M3E Study
-                </p>
-              </motion.div>
             </div>
+
+            {/* Glass Card — outside overflow:hidden so it won't be clipped */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 16 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+              style={{
+                position: 'absolute',
+                bottom: '32px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                background: 'rgba(17,17,17,0.75)',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
+                padding: '32px 40px',
+                borderRadius: '20px',
+                border: '1px solid rgba(255,255,255,0.12)',
+                textAlign: 'center',
+                width: '66%',
+                boxShadow: '0 24px 48px rgba(0,0,0,0.5)',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '8px',
+                zIndex: 2,
+              }}
+            >
+              <Crosshair size={28} color="#4DEBFF" style={{ marginBottom: '4px' }} />
+              <h4 style={{ fontSize: 'clamp(44px, 6vw, 64px)', fontWeight: 700, color: '#ffffff', lineHeight: 1 }}>
+                &lt; 1&quot;
+              </h4>
+              <p style={{ fontSize: '12px', fontWeight: 600, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                RMS Absolute Accuracy
+              </p>
+              <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.35)', marginTop: '2px' }}>
+                DroneDeploy M3E Study
+              </p>
+            </motion.div>
           </div>
         </ScrollReveal>
       </div>
