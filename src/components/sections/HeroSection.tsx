@@ -65,7 +65,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease }}
-            style={{ display: 'flex', items: 'center', gap: '12px', marginBottom: '32px' }}
+            style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '32px' }}
           >
             <div style={{ width: '32px', height: '2px', backgroundColor: '#4DEBFF', marginTop: '7px' }} />
             <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.2em', color: '#E8612A' }}>

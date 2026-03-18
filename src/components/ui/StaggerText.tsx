@@ -2,14 +2,6 @@
 
 import { motion } from 'framer-motion'
 
-const container = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.08,
-    },
-  },
-}
 
 const wordVariant = {
   hidden: { y: 60, opacity: 0 },
@@ -28,14 +20,26 @@ interface StaggerTextProps {
   className?: string
   /** Renders as h1 (default), h2, or h3 */
   tag?: 'h1' | 'h2' | 'h3'
+  stagger?: number
+  delay?: number
 }
 
-export default function StaggerText({ text, className, tag = 'h1' }: StaggerTextProps) {
+export default function StaggerText({ text, className, tag = 'h1', stagger = 0.08, delay = 0 }: StaggerTextProps) {
   const MotionTag = tag === 'h1'
     ? motion.h1
     : tag === 'h2'
     ? motion.h2
     : motion.h3
+
+  const container = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: stagger,
+        delayChildren: delay,
+      },
+    },
+  }
 
   return (
     <MotionTag
