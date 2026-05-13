@@ -130,6 +130,15 @@ export default function Footer() {
             <ul className="flex flex-col gap-3">
               <li>
                 <a
+                  href="tel:+12505550100"
+                  style={{ fontSize: '13px', color: 'rgba(255,255,255,0.65)', fontWeight: 600 }}
+                  className="transition-colors duration-200 hover:text-white"
+                >
+                  (250) 555-0100
+                </a>
+              </li>
+              <li>
+                <a
                   href="mailto:hello@sequoiadrone.ca"
                   style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)' }}
                   className="transition-colors duration-200 hover:text-white"
@@ -140,7 +149,7 @@ export default function Footer() {
               <li
                 style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)' }}
               >
-                British Columbia, Canada
+                Kamloops, BC · Thompson-Okanagan · Greater Vancouver
               </li>
             </ul>
 
@@ -194,12 +203,16 @@ export default function Footer() {
           <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.25)' }}>
             &copy; {new Date().getFullYear()} Sequoia Drone Systems. All Rights Reserved.
           </p>
-          <div className="flex items-center gap-6">
-            {['Privacy Policy', 'Terms of Service'].map((label) => (
+          <div className="flex items-center gap-6 flex-wrap">
+            {[
+              { label: 'Privacy Policy', href: '/privacy' },
+              { label: 'Terms & Conditions', href: '/terms' },
+              { label: 'Cancellation Policy', href: '/refund' },
+            ].map(({ label, href }) => (
               <Link
                 key={label}
-                href="#"
-                style={{ fontSize: '12px', color: 'rgba(255,255,255,0.25)' }}
+                href={href}
+                style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)' }}
                 className="transition-colors duration-200 hover:text-white"
               >
                 {label}

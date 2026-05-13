@@ -91,13 +91,13 @@ export default function HeroSection() {
                 <AnimatePresence>
                   {mounted && (
                     <>
-                      <StaggerText text="Survey-Grade Data." stagger={0.06} />{' '}
-                      <StaggerText text="For Land &" stagger={0.06} delay={0.25} />{' '}
+                      <StaggerText text="Drone Services in Kamloops & BC." stagger={0.06} />{' '}
+                      <StaggerText text="For Land &" stagger={0.06} delay={0.35} />{' '}
                       <span>
                         <span style={{ color: '#4DEBFF', fontStyle: 'italic', textShadow: '0 0 20px rgba(77,235,255,0.3)' }}>
-                          <StaggerText text="Living" stagger={0.06} delay={0.5} />
+                          <StaggerText text="Living" stagger={0.06} delay={0.6} />
                         </span>{' '}
-                        <StaggerText text="Ecosystems." stagger={0.06} delay={0.65} />
+                        <StaggerText text="Ecosystems." stagger={0.06} delay={0.75} />
                       </span>
                     </>
                   )}
@@ -155,7 +155,7 @@ export default function HeroSection() {
               style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}
             >
               <Link
-                href="/services"
+                href="#contact"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -179,11 +179,11 @@ export default function HeroSection() {
                   e.currentTarget.style.transform = 'translateY(0)'
                 }}
               >
-                Explore Solutions <ArrowRight size={18} />
+                Get a Free Quote <ArrowRight size={18} />
               </Link>
 
               <Link
-                href="/hardware"
+                href="#booking"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -206,7 +206,7 @@ export default function HeroSection() {
                   e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'
                 }}
               >
-                View Hardware
+                Book a Flight
               </Link>
             </motion.div>
           </div>
