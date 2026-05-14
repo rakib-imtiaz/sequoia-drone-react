@@ -18,8 +18,8 @@ const wordVariant = {
 interface StaggerTextProps {
   text: string
   className?: string
-  /** Renders as h1 (default), h2, or h3 */
-  tag?: 'h1' | 'h2' | 'h3'
+  /** Renders as h1 (default), h2, h3, or span */
+  tag?: 'h1' | 'h2' | 'h3' | 'span'
   stagger?: number
   delay?: number
 }
@@ -29,7 +29,9 @@ export default function StaggerText({ text, className, tag = 'h1', stagger = 0.0
     ? motion.h1
     : tag === 'h2'
     ? motion.h2
-    : motion.h3
+    : tag === 'h3'
+    ? motion.h3
+    : motion.span
 
   const container = {
     hidden: {},

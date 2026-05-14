@@ -13,7 +13,7 @@ export default function RefundPage() {
   return (
     <LegalLayout title="Cancellation & Refund Policy" lastUpdated="May 2026">
       <p>
-        Every flight requires pilot scheduling, airspace coordination, and equipment preparation —
+        Every flight requires pilot scheduling, airspace coordination, and equipment preparation,
         so cancellations have real cost implications. The policy below is designed to be fair to
         both parties and complies with Stripe&apos;s merchant-policy requirements.
       </p>
@@ -21,14 +21,14 @@ export default function RefundPage() {
       <h2>1. Cancellation Windows</h2>
       <ul>
         <li>
-          <strong>48+ hours before flight</strong> — <strong>Full refund</strong> of the deposit.
+          <strong>48+ hours before flight:</strong> <strong>Full refund</strong> of the deposit.
         </li>
         <li>
-          <strong>24–48 hours before flight</strong> — <strong>50% refund</strong>. The remaining
+          <strong>24 to 48 hours before flight:</strong> <strong>50% refund</strong>. The remaining
           50% covers pilot reservation and airspace booking costs.
         </li>
         <li>
-          <strong>Less than 24 hours, same-day, or no-show</strong> — <strong>No refund</strong>.
+          <strong>Less than 24 hours, same-day, or no-show:</strong> <strong>No refund</strong>.
           The full deposit is forfeited.
         </li>
       </ul>

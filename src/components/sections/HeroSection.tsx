@@ -91,13 +91,13 @@ export default function HeroSection() {
                 <AnimatePresence>
                   {mounted && (
                     <>
-                      <StaggerText text="Drone Services in Kamloops & BC." stagger={0.06} />{' '}
-                      <StaggerText text="For Land &" stagger={0.06} delay={0.35} />{' '}
+                      <StaggerText text="Drone Services in Kamloops & BC." tag="span" stagger={0.06} />{' '}
+                      <StaggerText text="For Land &" tag="span" stagger={0.06} delay={0.35} />{' '}
                       <span>
                         <span style={{ color: '#4DEBFF', fontStyle: 'italic', textShadow: '0 0 20px rgba(77,235,255,0.3)' }}>
-                          <StaggerText text="Living" stagger={0.06} delay={0.6} />
+                          <StaggerText text="Living" tag="span" stagger={0.06} delay={0.6} />
                         </span>{' '}
-                        <StaggerText text="Ecosystems." stagger={0.06} delay={0.75} />
+                        <StaggerText text="Ecosystems." tag="span" stagger={0.06} delay={0.75} />
                       </span>
                     </>
                   )}
@@ -119,7 +119,7 @@ export default function HeroSection() {
                 fontWeight: 400,
               }}
             >
-              We fly drones, collect PPK-corrected GNSS data, and process it into orthomosaics, 3D point clouds, and DXF files — ready for AutoCAD Civil 3D on day one.
+              We fly drones, collect PPK-corrected GNSS data, and process it into orthomosaics, 3D point clouds, and DXF files, ready for AutoCAD Civil 3D on day one.
             </motion.p>
 
             {/* Value Props Pills */}
@@ -287,7 +287,7 @@ export default function HeroSection() {
                 0.43&quot;
               </div>
               <div style={{ fontSize: '11px', color: '#4DEBFF', marginTop: '4px' }}>
-                RMS — M3E RTK + GCPs
+                RMS · M3E RTK + GCPs
               </div>
               <div style={{ fontSize: '10px', color: '#aaaaaa', marginTop: '4px' }}>
                 DroneDeploy 2023

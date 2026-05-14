@@ -1,4 +1,4 @@
-# Sequoia Drone — Go-Live Checklist
+# Sequoia Drone Go-Live Checklist
 
 Mirrors §10 of the Developer Brief. Tick off every item before launching Google Ads campaigns.
 
@@ -10,7 +10,7 @@ Mirrors §10 of the Developer Brief. Tick off every item before launching Google
 - [ ] Logo uploaded and displays correctly in Navbar + Footer
 - [ ] All placeholder copy reviewed and replaced with final client-approved text
 - [ ] All images compressed to WebP, <200KB each, with descriptive `alt` text
-- [ ] Mobile responsive — tested on iPhone (Safari) and Android (Chrome)
+- [ ] Mobile responsive, tested on iPhone (Safari) and Android (Chrome)
 - [ ] Smooth scroll anchor navigation works from header on every section
 - [ ] No broken links or 404 errors (run a link checker)
 - [ ] Phone number is `tel:` link and clickable on mobile
@@ -44,9 +44,9 @@ Mirrors §10 of the Developer Brief. Tick off every item before launching Google
 - [ ] `/terms` live, linked in footer, governing law set to BC
 - [ ] `/refund` live, linked in footer, matches the policy filed in Stripe
 - [ ] Lead form has CASL consent checkbox linking to `/privacy` + `/terms`
-- [ ] SSL active — site reachable only via `https://`
+- [ ] SSL active, site reachable only via `https://`
 - [ ] No copyrighted images used without license
-- [ ] All testimonials are real (no fabricated reviews — Google Ads policy)
+- [ ] All testimonials are real (no fabricated reviews, per Google Ads policy)
 
 ## Performance
 

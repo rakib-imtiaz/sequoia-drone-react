@@ -23,10 +23,10 @@ export default function PrivacyPage() {
       <h2>1. Information We Collect</h2>
       <p>When you contact us through our website, book a flight, or pay a deposit, we may collect:</p>
       <ul>
-        <li><strong>Identity &amp; contact data</strong> — name, email address, phone number.</li>
-        <li><strong>Project details</strong> — service type, location, project description.</li>
-        <li><strong>Technical data</strong> — IP address, browser type, pages visited (via Google Analytics).</li>
-        <li><strong>Payment data</strong> — handled directly by Stripe; we never see your full card number.</li>
+        <li><strong>Identity &amp; contact data:</strong> name, email address, phone number.</li>
+        <li><strong>Project details:</strong> service type, location, project description.</li>
+        <li><strong>Technical data:</strong> IP address, browser type, pages visited (via Google Analytics).</li>
+        <li><strong>Payment data:</strong> handled directly by Stripe; we never see your full card number.</li>
       </ul>
 
       <h2>2. How We Use Your Information</h2>
@@ -41,11 +41,11 @@ export default function PrivacyPage() {
       <h2>3. Third-Party Tools</h2>
       <p>We use the following service providers to operate our business:</p>
       <ul>
-        <li><strong>Google Analytics 4 &amp; Google Ads</strong> — anonymized site analytics and ad performance tracking.</li>
-        <li><strong>Stripe</strong> — secure payment processing for deposits and packages.</li>
-        <li><strong>Calendly</strong> — booking calendar for consultations and flights.</li>
-        <li><strong>Formspree</strong> — secure delivery of contact-form submissions.</li>
-        <li><strong>Google reCAPTCHA</strong> — spam prevention on our forms.</li>
+        <li><strong>Google Analytics 4 &amp; Google Ads:</strong> anonymized site analytics and ad performance tracking.</li>
+        <li><strong>Stripe:</strong> secure payment processing for deposits and packages.</li>
+        <li><strong>Calendly:</strong> booking calendar for consultations and flights.</li>
+        <li><strong>Formspree:</strong> secure delivery of contact-form submissions.</li>
+        <li><strong>Google reCAPTCHA:</strong> spam prevention on our forms.</li>
       </ul>
       <p>Each provider has its own privacy policy governing its use of your data.</p>
 

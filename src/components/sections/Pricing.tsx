@@ -31,7 +31,7 @@ const tiers: Tier[] = [
     name: 'Standard',
     price: 'From $399',
     cadence: 'per project',
-    description: 'Our most popular package — full-property real estate and small construction.',
+    description: 'Our most popular package for full-property real estate and small construction.',
     features: ['1 hour flight', 'Full edit', '25 photos + 60–90 sec video', 'Kamloops area'],
     highlighted: true,
     ctaLabel: 'Book Standard',
@@ -126,7 +126,7 @@ export default function Pricing() {
                 lineHeight: 1.6,
               }}
             >
-              Every project is unique. These are floor prices — book directly with Stripe, or request a custom quote.
+              Every project is unique. These are floor prices. Book directly with Stripe, or request a custom quote.
             </p>
           </div>
         </ScrollReveal>
@@ -300,7 +300,7 @@ export default function Pricing() {
             marginRight: 'auto',
           }}
         >
-          Prices in CAD. Applicable GST/PST added at checkout. Cancellation & refund policy applies — see footer.
+          Prices in CAD. Applicable GST/PST added at checkout. Cancellation & refund policy applies. See footer.
         </p>
       </div>
 

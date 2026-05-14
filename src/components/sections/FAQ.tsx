@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     q: 'How far in advance do I need to book?',
-    a: 'We recommend booking 3–5 business days in advance. Same-week bookings are sometimes available — call us to check availability.',
+    a: 'We recommend booking 3 to 5 business days in advance. Same-week bookings are sometimes available, so call us to check availability.',
   },
   {
     q: 'What happens if the weather is bad?',
@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     q: 'Do I need permits?',
-    a: 'No — we handle all necessary airspace authorizations, including NAV CANADA approvals and any required park or municipal permits.',
+    a: 'No. We handle all necessary airspace authorizations, including NAV CANADA approvals and any required park or municipal permits.',
   },
   {
     q: 'How do I receive my files?',
@@ -35,7 +35,7 @@ const faqs = [
   },
   {
     q: 'Do you offer packages for recurring work?',
-    a: 'Yes. For construction progress monitoring, recurring real estate clients, and inspection contracts, we offer monthly retainer pricing — contact us for details.',
+    a: 'Yes. For construction progress monitoring, recurring real estate clients, and inspection contracts, we offer monthly retainer pricing. Contact us for details.',
   },
 ]
 

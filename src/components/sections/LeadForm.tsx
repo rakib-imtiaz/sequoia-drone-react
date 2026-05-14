@@ -169,7 +169,7 @@ export default function LeadForm() {
                 lineHeight: 1.6,
               }}
             >
-              We respond to every inquiry within 24 hours. No obligation, no spam — just a clear quote for your aerial work.
+              We respond to every inquiry within 24 hours. No obligation, no spam, just a clear quote for your aerial work.
             </p>
           </div>
         </ScrollReveal>

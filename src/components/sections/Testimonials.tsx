@@ -18,7 +18,7 @@ type Review = {
 const reviews: Review[] = [
   {
     quote:
-      'Sequoia delivered our Kamloops listing photos within 48 hours. The aerial shots booked the property in 9 days — well above our usual market time.',
+      'Sequoia delivered our Kamloops listing photos within 48 hours. The aerial shots booked the property in 9 days, well above our usual market time.',
     name: 'Jordan M.',
     role: 'Real Estate Agent, Kamloops',
     rating: 5,
@@ -32,7 +32,7 @@ const reviews: Review[] = [
   },
   {
     quote:
-      'They handled all the NAV CANADA permits for our Lower Mainland shoot. Insured, certified, and easy to work with — exactly what a commercial production needs.',
+      'They handled all the NAV CANADA permits for our Lower Mainland shoot. Insured, certified, and easy to work with. Exactly what a commercial production needs.',
     name: 'Daniel K.',
     role: 'Producer, Vancouver Film & Media',
     rating: 5,
