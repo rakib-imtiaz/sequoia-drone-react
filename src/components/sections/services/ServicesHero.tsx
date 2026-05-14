@@ -23,7 +23,7 @@ export default function ServicesHero() {
       {/* Background Image */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
         <ParallaxImage
-          src="https://images.unsplash.com/photo-1518002052184-f7a6bc8279bb?w=1600&q=80"
+          src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&q=80"
           alt="Aerial view abstract landscape mapping"
           speed={100}
         />
